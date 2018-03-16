@@ -13,9 +13,7 @@ getBS(conv_name, map, which, meth)
 
 \item{which}{a GRanges instance limiting the request}
 
-\item{meth}{a function with two parameters, tf (a character(1) Mnnnn
-string) and which (a GRanges instance) that retrieves TF 'bed'-like
-records from a resource}
+\item{meth}{a function with two parameters, tf (a character(1) string) and which (a GRanges instance) that retrieves TF 'bed'-like records from a resource}
 }
 \description{
 acquire a GRanges representing binding sites for a TF
@@ -23,9 +21,9 @@ acquire a GRanges representing binding sites for a TF
 \note{
 We assume that the retrieval yields a data.frame in the format
 \code{
-    V1    V2    V3               V4        V5 V6       V7 \cr
- chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04 \cr
- chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04 \cr
+    V1    V2    V3               V4        V5 V6       V7
+ chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04
+ chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04
 }
 }
 \examples{
