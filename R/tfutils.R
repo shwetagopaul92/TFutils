@@ -6,7 +6,7 @@
 #' requireNamespace("GenomicRanges")
 #' requireNamespace("IRanges")
 #' requireNamespace("DT")
-#' importFIMO_local("M5946", param=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
+#' importFIMO_local("M5946", which=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
 #' @export
 importFIMO_local = function( tf, which ) {
   stopifnot(length(tf)==1, is(tf, "character"))

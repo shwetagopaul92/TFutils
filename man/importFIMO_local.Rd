@@ -18,5 +18,5 @@ utility to read FIMO outputs from local resource(cluster)
 requireNamespace("GenomicRanges")
 requireNamespace("IRanges")
 requireNamespace("DT")
-importFIMO_local("M5946", param=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
+importFIMO_local("M5946", which=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
 }
