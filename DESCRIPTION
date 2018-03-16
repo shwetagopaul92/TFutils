@@ -1,0 +1,12 @@
+Package: TFutils
+Title: TFutils
+Description: Package to work with TF data.
+Version: 0.0.1
+Author: Shweta Gopaulakrishnan
+Imports: GenomicRanges, IRanges, S4Vectors, methods
+Suggests: knitr, utils, data.table, DT
+Maintainer: Shweta Gopaulakrishnan <reshg@channing.harvard.edu>
+License: Artistic-2.0
+LazyLoad: yes 
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
