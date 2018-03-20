@@ -78,7 +78,17 @@ Let's say that MsigDb is our preferred map from TFs to gene sets (as TF targets)
 Should we make a database that links from familiar symbols like VDR to targets of VDR
 or from ORMDL3 to any TF that happens to bind near it....
 
-MSigDb has a RESTful interfaces?  or pull down 600 gmt files which are small
+MSigDb has a RESTful interfaces?  tft gmt has been acquired
+
+canonical HGNC names for TFs derived from tfname (remove suffix for example) and bridge
+to the M numbers used in FIMO
+
+compare the FIMO binding profile for a TF to the genes called 'targets'
+
+binding profiles are in bed files -> granges on some chromosome
+also:  genes(TxDb.Hsapiens.UCSC.hg19.knownGene) -> a granges ... do the places of high binding
+coincide with the promoter regions or any regions of the genes called 'targets'
+
 
 
 # References
