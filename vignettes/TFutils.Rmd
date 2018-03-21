@@ -24,6 +24,8 @@ library(GO.db)
 library(Homo.sapiens)
 library(dplyr)
 library(magrittr)
+library(GenomicRanges)
+library(IRanges)
 })
 })
 ```
@@ -117,6 +119,17 @@ datatable( grabTab("STAT1") )
 binding profiles are in bed files -> granges on some chromosome
 also:  genes(TxDb.Hsapiens.UCSC.hg19.knownGene) -> a granges ... do the places of high binding
 coincide with the promoter regions or any regions of the genes called 'targets'
+```
+
+# Working with FIMO-based binding scores
+
+We have lodged two bed-like files in AWS S3, for VDR and HOXA3.
+We can retrieve scored intervals identified by FIMO as follows.
+```{r lkaws}
+library(GenomicRanges)
+library(IRanges)
+tfbs_as_GRanges("HOXA3", TFutils::fimoMap,
+   which=GRanges("chr1", IRanges(1,1e6)), meth=importFIMO_S3)
 ```
 
 
