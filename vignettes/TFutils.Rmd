@@ -1,0 +1,119 @@
+---
+title: "TFutils motivations: overview of bioinformatics of transcription factors and their binding sites"
+author: "Shweta G., et al."
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{TF utils motivations}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+bibliography: TFutils.bib
+---
+
+```{r setup,echo=FALSE,results="hide"}
+suppressPackageStartupMessages({
+suppressMessages({
+library(TFutils)
+})
+})
+```
+
+# Introduction
+
+TFutils addresses very general problems of annotation and location
+of TFs and their targets.
+
+# TF involvement in GWAS findings
+
+The following illustrates aspects of combinatorics of TFs in
+conjunction with GWAS findings for a collection of diseases (@Maurano2012).
+
+![](images/mauranoTFcombs.png)
+
+## Looking for genes association with POU2F1 in GO
+
+Let's consider how to identify the genes in the POU2F1 pathway and check 
+for GWAS hits.  According to GeneCards, the POU2F1 TF is involved with the
+glucocorticoid receptor network and the ATF-2 TF network.
+
+Let's try GO.
+
+```{r lkgo}
+library(GO.db)
+library(Homo.sapiens)
+allt = keys(GO.db, keytype="TERM")
+length(grep("glucocorticoid", allt, value=TRUE))
+gcrpath = AnnotationDbi::select(Homo.sapiens, keys="glucocorticoid receptor signaling pathway", 
+  columns=c("GOID", "SYMBOL"), keytype="TERM")
+gcrpath
+```
+
+Then check in ebicat
+
+```{r dogwas}
+data(gwascat_hg19)
+GCRg = intersect(gcrpath$SYMBOL, gwascat_hg19$MAPPED_GENE)
+GCRg
+```
+
+What are the associated diseases?
+
+```{r lkdis}
+library(dplyr)
+library(magrittr)
+chk = as(mcols(gwascat_hg19), "data.frame") %>% 
+     filter(MAPPED_GENE %in% GCRg) %>% select(`DISEASE/TRAIT`)
+unique(unlist(chk))
+```
+
+What have we done?  We used some annotation related to POU2F1 to
+identify a relevant gene set (members of the glucocorticoid receptor
+signaling pathway, as defined by GO annotation), and checked the
+associated genes for membership as "mapped genes" in the GWAS
+catalog.  We then enumerated the diseases associated with
+DNA variants in these genes.  There does not seem to be any
+overlap with the diseases listed by Maurano.
+
+## Using MSigDb
+
+Let's try a different resource: Broad Institute's MSigDb.  We have
+collected the transcription factor target collection of gene sets.
+
+```{r lkbro}
+data(tftColl)
+grep("POU2F1", names(tftColl), value=TRUE)
+grep("STAT1", names(tftColl), value=TRUE)
+```
+So POU2F1 is not evidently present as a TF for which targets were enumerated,
+but three motifs related to STAT1 binding have engendered gene sets.  Let's
+put them all together.  The `grabTab` function does this using code like
+the following.
+```{r workbr,eval=FALSE}
+allst1 = unlist(lapply(tftColl[ grep("STAT1", names(tftColl)) ], geneIds))
+library(org.Hs.eg.db)
+st1syms = AnnotationDbi::mapIds(org.Hs.eg.db, keys=allst1, 
+    keytype="ENTREZID", column="SYMBOL")
+as(mcols(gwascat_hg19), "data.frame") %>% 
+     filter(MAPPED_GENE %in% st1syms) %>% select(`DISEASE/TRAIT`, 
+        MAPPED_GENE, CHR_ID, CHR_POS, REGION)
+```
+Let's try it:
+```{r dorun}
+library(DT)
+datatable( grabTab("STAT1") )
+```
+
+```
+binding profiles are in bed files -> granges on some chromosome
+also:  genes(TxDb.Hsapiens.UCSC.hg19.knownGene) -> a granges ... do the places of high binding
+coincide with the promoter regions or any regions of the genes called 'targets'
+```
+
+
+
+# References

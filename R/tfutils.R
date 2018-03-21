@@ -1,16 +1,19 @@
 
 #' utility to read FIMO outputs from local resource(cluster)
+#' @importFrom data.table fread
 #' @param tf character(1) file id
 #' @param which a GRanges delimiting the extract
 #' @examples
+#' \dontrun{  # need data local in the package
 #' requireNamespace("GenomicRanges")
 #' requireNamespace("IRanges")
 #' requireNamespace("DT")
 #' importFIMO_local("M5946_1", which=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
+#' } 
 #' @export
 importFIMO_local = function( tf, which ) {
   stopifnot(length(tf)==1, is(tf, "character"))
-  chromosome = which@seqnames@values
+  chromosome = which@seqnames@values  # NO CODING OF PATHS EXCEPT WITH system.file
   myfile = paste0("/udd/reshg/chrfiles_tf/",tf,"/",chromosome,".bed")
   chrbed = fread(myfile)
   chrbed
@@ -21,6 +24,7 @@ importFIMO_local = function( tf, which ) {
 
 #' acquire a GRanges representing binding sites for a TF
 #' @importFrom IRanges IRanges
+#' @importFrom methods is
 #' @importFrom GenomicRanges GRanges
 #' @importFrom S4Vectors "mcols<-"
 #' @importFrom S4Vectors "mcols"
@@ -31,17 +35,19 @@ importFIMO_local = function( tf, which ) {
 #' string) and which (a GRanges instance) that retrieves TF 'bed'-like
 #' records from a resource
 #' @note We assume that the retrieval yields a data.frame in the format
-#' \code{
-#'     V1    V2    V3               V4        V5 V6       V7 \cr
-#'  chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04 \cr
-#'  chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04 \cr
-#' }
+#' ```
+#'     V1    V2    V3               V4        V5 V6       V7 
+#'  chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04 
+#'  chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04 
+#' ```
 #' @examples
+#' \dontrun{
 #' data(named_tf)
 #' requireNamespace("GenomicRanges")
 #' requireNamespace("IRanges")
 #' getBS("VDR", named_tf, GenomicRanges::GRanges("chr1", IRanges::IRanges(1,25000)), 
 #'      importFIMO_local)
+#' }
 #' @export
 getBS = function( conv_name, map, which, meth ) {
   stopifnot(!missing(which), is(which, "GRanges"))

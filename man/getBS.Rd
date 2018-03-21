@@ -21,17 +21,17 @@ records from a resource}
 acquire a GRanges representing binding sites for a TF
 }
 \note{
-We assume that the retrieval yields a data.frame in the format
-\code{
-    V1    V2    V3               V4        V5 V6       V7 \cr
- chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04 \cr
- chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04 \cr
+We assume that the retrieval yields a data.frame in the format\preformatted{    V1    V2    V3               V4        V5 V6       V7 
+ chr1 11496 11511 chr1:11496-11511 -1.555560  - 5.92e-04 
+ chr1 11520 11535 chr1:11520-11535 -3.161620  + 9.12e-04 
 }
 }
 \examples{
+\dontrun{
 data(named_tf)
 requireNamespace("GenomicRanges")
 requireNamespace("IRanges")
 getBS("VDR", named_tf, GenomicRanges::GRanges("chr1", IRanges::IRanges(1,25000)), 
      importFIMO_local)
+}
 }

@@ -15,8 +15,10 @@ importFIMO_local(tf, which)
 utility to read FIMO outputs from local resource(cluster)
 }
 \examples{
+\dontrun{  # need data local in the package
 requireNamespace("GenomicRanges")
 requireNamespace("IRanges")
 requireNamespace("DT")
-importFIMO_local("M5946", which=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
+importFIMO_local("M5946_1", which=GenomicRanges::GRanges("chr1", IRanges::IRanges(1,15000)))
+} 
 }

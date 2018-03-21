@@ -1,13 +1,17 @@
 Package: TFutils
 Title: TFutils
 Description: Package to work with TF data.
-Version: 0.0.1
+Version: 0.0.4
 Author: Shweta Gopaulakrishnan
-Imports: GenomicRanges, IRanges, S4Vectors, methods
-Suggests: knitr, utils, data.table, DT
+Depends: R (>= 3.5.0)
+Imports: methods, GenomicRanges, IRanges, S4Vectors, GSEABase,
+	shiny, miniUI, data.table, dplyr, magrittr, AnnotationDbi
+Suggests: knitr, utils, DT, Homo.sapiens, GO.db, org.Hs.eg.db
 Maintainer: Shweta Gopaulakrishnan <reshg@channing.harvard.edu>
 License: Artistic-2.0
 LazyLoad: yes 
+LazyData: true
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 biocViews: Transcriptomics
+Roxygen: list(markdown = TRUE)
