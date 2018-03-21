@@ -19,6 +19,11 @@ bibliography: TFutils.bib
 suppressPackageStartupMessages({
 suppressMessages({
 library(TFutils)
+library(DT)
+library(GO.db)
+library(Homo.sapiens)
+library(dplyr)
+library(magrittr)
 })
 })
 ```
@@ -56,8 +61,7 @@ gcrpath
 Then check in ebicat
 
 ```{r dogwas}
-data(gwascat_hg19)
-GCRg = intersect(gcrpath$SYMBOL, gwascat_hg19$MAPPED_GENE)
+GCRg = intersect(gcrpath$SYMBOL, TFutils::gwascat_hg19$MAPPED_GENE)
 GCRg
 ```
 
@@ -66,7 +70,7 @@ What are the associated diseases?
 ```{r lkdis}
 library(dplyr)
 library(magrittr)
-chk = as(mcols(gwascat_hg19), "data.frame") %>% 
+chk = as(mcols(TFutils::gwascat_hg19), "data.frame") %>% 
      filter(MAPPED_GENE %in% GCRg) %>% select(`DISEASE/TRAIT`)
 unique(unlist(chk))
 ```
@@ -98,12 +102,13 @@ allst1 = unlist(lapply(tftColl[ grep("STAT1", names(tftColl)) ], geneIds))
 library(org.Hs.eg.db)
 st1syms = AnnotationDbi::mapIds(org.Hs.eg.db, keys=allst1, 
     keytype="ENTREZID", column="SYMBOL")
-as(mcols(gwascat_hg19), "data.frame") %>% 
+as(mcols(TFutils::gwascat_hg19), "data.frame") %>% 
      filter(MAPPED_GENE %in% st1syms) %>% select(`DISEASE/TRAIT`, 
         MAPPED_GENE, CHR_ID, CHR_POS, REGION)
 ```
 Let's try it:
 ```{r dorun}
+library(TFutils)
 library(DT)
 datatable( grabTab("STAT1") )
 ```
