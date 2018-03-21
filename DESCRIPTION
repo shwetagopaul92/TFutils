@@ -1,7 +1,7 @@
 Package: TFutils
 Title: TFutils
 Description: Package to work with TF data.
-Version: 0.0.4
+Version: 0.0.5
 Author: Shweta Gopaulakrishnan
 Depends: R (>= 3.5.0)
 Imports: methods, GenomicRanges, IRanges, S4Vectors, GSEABase,
