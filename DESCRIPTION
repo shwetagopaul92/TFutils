@@ -1,13 +1,14 @@
 Package: TFutils
 Title: TFutils
 Description: Package to work with TF data.
-Version: 0.0.6
+Version: 0.0.8
 Author: Shweta Gopaulakrishnan
 Depends: R (>= 3.5.0)
 Imports: methods, GenomicRanges, IRanges, S4Vectors, GSEABase,
 	shiny, miniUI, data.table, dplyr, magrittr, AnnotationDbi,
 	Rsamtools, GenomeInfoDb
-Suggests: knitr, utils, DT, Homo.sapiens, GO.db, org.Hs.eg.db
+Suggests: knitr, utils, DT, Homo.sapiens, GO.db, org.Hs.eg.db,
+	ensembldb, Gviz, EnsDb.Hsapiens.v75
 Maintainer: Shweta Gopaulakrishnan <reshg@channing.harvard.edu>
 License: Artistic-2.0
 LazyLoad: yes 
