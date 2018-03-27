@@ -60,3 +60,4 @@ requireNamespace("IRanges")
 getBS("VDR", named_tf, GenomicRanges::GRanges("chr1", IRanges::IRanges(1,25000)), 
      importFIMO_local)
 }
+}
