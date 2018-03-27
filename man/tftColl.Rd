@@ -15,7 +15,6 @@ tftColl
 tftColl: GSEABase GeneSetCollection for transcription factor targets
 }
 \examples{
-data(tftColl)
-tftColl
+TFutils::tftColl
 }
 \keyword{datasets}

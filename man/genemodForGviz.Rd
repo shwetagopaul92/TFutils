@@ -27,6 +27,6 @@ if (requireNamespace("EnsDb.Hsapiens.v75") &
     requireNamespace("Gviz")) {
  orm = genemodForGviz("ORMDL3", resource= EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75)
  orm
- plotTracks(orm, showId=TRUE) # change id_elem for shorter id string
+ Gviz::plotTracks(orm, showId=TRUE) # change id_elem for shorter id string
 }
 }

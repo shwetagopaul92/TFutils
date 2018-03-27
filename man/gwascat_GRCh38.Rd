@@ -15,7 +15,6 @@ gwascat_GRCh38
 gwascat_GRCh38: GRanges of march 21 2018 EBI gwascat
 }
 \examples{
-data(gwascat_GRCh38)
-gwascat_GRCh38[,1:5]
+TFutils::gwascat_GRCh38[,1:5]
 }
 \keyword{datasets}

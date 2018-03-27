@@ -15,7 +15,6 @@ gwascat_hg19
 gwascat_hg19: GRanges of march 21 2018 EBI gwascat
 }
 \examples{
-data(gwascat_hg19)
-gwascat_hg19[,1:5]
+TFutils::gwascat_hg19[,1:5]
 }
 \keyword{datasets}

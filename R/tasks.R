@@ -33,7 +33,7 @@ importFIMO_S3 = function( tf, which ) {
  tmp = scanTabix( url, param = which )
  con = textConnection(paste(tmp[[1]], collapse="\n"))
  on.exit(close(con))
- read.delim(con, h=FALSE)
+ read.delim(con, header=FALSE)
 }
 
 #' acquire a GRanges representing binding sites for a TF

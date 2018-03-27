@@ -1,43 +1,70 @@
-#datalist		gwascat_hg19.rda	named_tf.rda
-#fimoMap.rda		motif_id_map.rda	symbol_map.rda
-#gwascat_GRCh38.rda	named_metadata_tf.rda	tftColl.rda
 
 #' gwascat_hg19: GRanges of march 21 2018 EBI gwascat
-#' @importFrom utils data
 #' @docType data
 #' @format GenomicRanges GRanges instance
 #' @source gwascat::makeCurrentGwascat, with gwascat:::lo38to19 applied
 #' @examples
-#' data(gwascat_hg19)
-#' gwascat_hg19[,1:5]
+#' TFutils::gwascat_hg19[,1:5]
 "gwascat_hg19"
 
 #' gwascat_GRCh38: GRanges of march 21 2018 EBI gwascat
-#' @importFrom utils data
 #' @docType data
 #' @format GenomicRanges GRanges instance
 #' @source gwascat::makeCurrentGwascat, with a little extra metadata
 #' @examples
-#' data(gwascat_GRCh38)
-#' gwascat_GRCh38[,1:5]
+#' TFutils::gwascat_GRCh38[,1:5]
 "gwascat_GRCh38"
 
 #' fimoMap: table with Mnnnn (motif PWM tags) and HGNC symbols for TFs
-#' @importFrom utils data
 #' @docType data
 #' @format data.frame
 #' @source Kimberly Glass (rekrg@channing.harvard.edu) 
 #' @examples
-#' data(fimoMap)
-#' head(fimoMap)
+#' head(TFutils::fimoMap)
 "fimoMap"
 
 #' tftColl: GSEABase GeneSetCollection for transcription factor targets
-#' @importFrom utils data
 #' @docType data
 #' @format GSEABase GeneSetCollection instance
 #' @source broad institute
 #' @examples
-#' data(tftColl)
-#' tftColl
+#' TFutils::tftColl
 "tftColl"
+
+#' fimo16: GenomicFiles instance to AWS S3-resident FIMO bed for 16 TFs
+#' @docType data
+#' @format GenomicFiles for a TabixFileList
+#' @source K. Glass ran FIMO
+#' @examples
+#' TFutils::fimo16
+"fimo16"
+
+#' cisbpTFcat: data.frame with information on CISBP TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://cisbp.ccbr.utoronto.ca/bulk.php} select Homo_sapiens
+#' @note Extracted March 2018
+#' @examples
+#' head(TFutils::cisbpTFcat)
+"cisbpTFcat"
+
+#' hocomoco.mono: data.frame with information on HOCOMOCO TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://hocomoco11.autosome.ru/human/mono?full=true} 
+#' @note Extracted March 2018
+#' @examples
+#' head(TFutils::hocomoco.mono)
+"hocomoco.mono"
+
+#' tftCollMap: data.frame with information on MSigDb TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://software.broadinstitute.org/gsea/msigdb/genesets.jsp?collection=TFT}
+#' @note Annotation of TFs is ad-hoc.  GeneSet names were tokenized, splitting
+#' by underscore, and then fragments were matched to SYMBOL and ALIAS elements
+#' of org.Hs.eg.db.  Extracted March 2018
+#' @examples
+#' head(TFutils::tftCollMap)
+"tftCollMap"
+

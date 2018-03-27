@@ -15,7 +15,6 @@ fimoMap
 fimoMap: table with Mnnnn (motif PWM tags) and HGNC symbols for TFs
 }
 \examples{
-data(fimoMap)
-head(fimoMap)
+head(TFutils::fimoMap)
 }
 \keyword{datasets}
