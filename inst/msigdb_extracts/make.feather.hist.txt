@@ -1,0 +1,21 @@
+library(feather)
+tfhash2 = read_feather("tfhash2.feather")
+tfhash2
+tfhash2 %>% filter(symbol=="GSDMB")
+library(magrittr)
+tfhash2 %>% filter(symbol=="GSDMB")
+library(dplyr)
+tfhash2 %>% filter(symbol=="GSDMB")
+tfhash2 %>% filter(symbol=="ORMDL3")
+tfhash2 %>% filter(symbol=="STAT1")
+tfhash2 %>% filter(tfname ="DBP%")
+tfhash2 %>% filter(tfname %like% "%DBP%")
+grep("POU", tfhash2$tfname, value=TRUE)
+tfhash2 %>% filter(tfname %like% "DBP")
+?filter
+unique(grep("POU", tfhash2$tfname, value=TRUE))
+tfhash2
+unique(grep("IRF9", tfhash2$tfname, value=TRUE))
+unique(grep("IRF", tfhash2$tfname, value=TRUE))
+unique(grep("IRF", tfhash2$symbol, value=TRUE))
+savehistory(file="make.feather.hist.txt")

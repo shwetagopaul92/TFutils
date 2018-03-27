@@ -1,0 +1,47 @@
+
+I was able to download all the TF target sets from e.g.,
+http://software.broadinstitute.org/gsea/msigdb/collections.jsp
+
+then with GSEABase
+
+alltft = getGmt("c3.tft.v6.1.entrez.gmt")
+
+> names(alltft)[1:20]
+ [1] "AAANWWTGC_UNKNOWN"  "AAAYRNCTG_UNKNOWN"  "MYOD_01"           
+ [4] "E47_01"             "CMYB_01"            "AP4_01"            
+ [7] "AACTTT_UNKNOWN"     "MEF2_01"            "ELK1_01"           
+[10] "SP1_01"             "EVI1_06"            "ATF_01"            
+[13] "HOX13_01"           "E2F_01"             "ELK1_02"           
+[16] "RSRFC4_01"          "CETS1P54_01"        "AACWWCAANK_UNKNOWN"
+[19] "P300_01"            "NFE2_01"           
+
+> grep("VDR", names(alltft), value=TRUE)
+[1] "VDR_Q3" "VDR_Q6"
+
+> details(alltft[["VDR_Q3"]])
+setName: VDR_Q3 
+geneIds: 1591, 84962, ..., 26088 (total: 225)
+geneIdType: Null
+collectionType: Null 
+setIdentifier: pc001844.partners.org:72440:Fri Mar 16 12:49:37 2018:3385
+description: http://www.broadinstitute.org/gsea/msigdb/cards/VDR_Q3
+organism: 
+pubMedIds: 
+urls: 
+contributor: 
+setVersion: 0.0.1
+creationDate: 
+
+the information here http://www.broadinstitute.org/gsea/msigdb/cards/VDR_Q3
+is interesting.
+
+We may want to make a SQLite database with two tables
+
+nomenclature
+systematic name, standard name (transfac?), 'gene id' for TF
+
+targets (a thin table with 2 fields?)
+systematic name, target [the latter as entrez id]
+
+then we can use dbplyr to handle the symbol mapping queries
+

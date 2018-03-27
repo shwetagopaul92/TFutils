@@ -1,0 +1,70 @@
+
+#' gwascat_hg19: GRanges of march 21 2018 EBI gwascat
+#' @docType data
+#' @format GenomicRanges GRanges instance
+#' @source gwascat::makeCurrentGwascat, with gwascat:::lo38to19 applied
+#' @examples
+#' TFutils::gwascat_hg19[,1:5]
+"gwascat_hg19"
+
+#' gwascat_GRCh38: GRanges of march 21 2018 EBI gwascat
+#' @docType data
+#' @format GenomicRanges GRanges instance
+#' @source gwascat::makeCurrentGwascat, with a little extra metadata
+#' @examples
+#' TFutils::gwascat_GRCh38[,1:5]
+"gwascat_GRCh38"
+
+#' fimoMap: table with Mnnnn (motif PWM tags) and HGNC symbols for TFs
+#' @docType data
+#' @format data.frame
+#' @source Kimberly Glass (rekrg@channing.harvard.edu) 
+#' @examples
+#' head(TFutils::fimoMap)
+"fimoMap"
+
+#' tftColl: GSEABase GeneSetCollection for transcription factor targets
+#' @docType data
+#' @format GSEABase GeneSetCollection instance
+#' @source broad institute
+#' @examples
+#' TFutils::tftColl
+"tftColl"
+
+#' fimo16: GenomicFiles instance to AWS S3-resident FIMO bed for 16 TFs
+#' @docType data
+#' @format GenomicFiles for a TabixFileList
+#' @source K. Glass ran FIMO
+#' @examples
+#' TFutils::fimo16
+"fimo16"
+
+#' cisbpTFcat: data.frame with information on CISBP TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://cisbp.ccbr.utoronto.ca/bulk.php} select Homo_sapiens
+#' @note Extracted March 2018
+#' @examples
+#' head(TFutils::cisbpTFcat)
+"cisbpTFcat"
+
+#' hocomoco.mono: data.frame with information on HOCOMOCO TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://hocomoco11.autosome.ru/human/mono?full=true} 
+#' @note Extracted March 2018
+#' @examples
+#' head(TFutils::hocomoco.mono)
+"hocomoco.mono"
+
+#' tftCollMap: data.frame with information on MSigDb TFs for human
+#' @docType data
+#' @format data.frame
+#' @source \url{http://software.broadinstitute.org/gsea/msigdb/genesets.jsp?collection=TFT}
+#' @note Annotation of TFs is ad-hoc.  GeneSet names were tokenized, splitting
+#' by underscore, and then fragments were matched to SYMBOL and ALIAS elements
+#' of org.Hs.eg.db.  Extracted March 2018
+#' @examples
+#' head(TFutils::tftCollMap)
+"tftCollMap"
+
