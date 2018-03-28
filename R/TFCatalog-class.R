@@ -24,7 +24,7 @@ TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
 setMethod("show", "TFCatalog", function(object) {
  cat("TFutils TFCatalog instance", object@name, "\n")
  cat(sprintf(" %d native Ids, including\n", length(object@nativeIds)))
- cat(selectSome(object@nativeIds, max=2), "\n")
+ cat(Biobase::selectSome(object@nativeIds, max=2), "\n")
  cat(sprintf(" %d unique HGNC tags, including\n", length(unique(object@HGNCmap[,2]))))
- cat(selectSome(na.omit(object@HGNCmap[,2])), "\n")
+ cat(Biobase::selectSome(na.omit(object@HGNCmap[,2])), "\n")
 })
