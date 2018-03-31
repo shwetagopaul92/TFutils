@@ -4,16 +4,19 @@
 \alias{TFtargs}
 \title{gadget to help sort through tags naming TFs}
 \usage{
-TFtargs(gscoll = TFutils::tftColl, initTF = "VDR")
+TFtargs(gscoll = TFutils::tftColl, initTF = "VDR_Q3",
+  gadtitle = "Search for a TF; its targets will be checked for mapped status in GWAS catalog")
 }
 \arguments{
 \item{gscoll}{a GSEABase GeneSetCollection}
 
 \item{initTF}{character(1) initial TF string for app}
+
+\item{gadtitle}{character(1) a title for the gadget panel}
 }
 \description{
 gadget to help sort through tags naming TFs
 }
 \note{
-Will use gwascat_hg19 to look for 'MAPPED_GENE' field entries matching targets.
+Will use TFutils::gwascat_hg19_chr17 to look for 'MAPPED_GENE' field entries matching targets, also hardcoded to use org.Hs.eg.db to map symbols
 }

@@ -60,10 +60,11 @@ gcrpath = AnnotationDbi::select(Homo.sapiens, keys="glucocorticoid receptor sign
 gcrpath
 ```
 
-Then check in ebicat
+Then check in EBI GWAS catalog.  We keep only chr17 for demonstration in
+this package.
 
 ```{r dogwas}
-GCRg = intersect(gcrpath$SYMBOL, TFutils::gwascat_hg19$MAPPED_GENE)
+GCRg = intersect(gcrpath$SYMBOL, TFutils::gwascat_hg19_chr17$MAPPED_GENE)
 GCRg
 ```
 
@@ -72,7 +73,7 @@ What are the associated diseases?
 ```{r lkdis}
 library(dplyr)
 library(magrittr)
-chk = as(mcols(TFutils::gwascat_hg19), "data.frame") %>% 
+chk = as(mcols(TFutils::gwascat_hg19_chr17), "data.frame") %>% 
      filter(MAPPED_GENE %in% GCRg) %>% select(`DISEASE/TRAIT`)
 unique(unlist(chk))
 ```
@@ -125,11 +126,13 @@ coincide with the promoter regions or any regions of the genes called 'targets'
 
 We have lodged two bed-like files in AWS S3, for VDR and HOXA3.
 We can retrieve scored intervals identified by FIMO as follows.
+Pure bed-like text will be split by chromosome and parsed directly.
+Tabix-indexed bed can be imported with restriction specified by GRanges.
 ```{r lkaws}
-library(GenomicRanges)
-library(IRanges)
-tfbs_as_GRanges("HOXA3", TFutils::fimoMap,
-   which=GRanges("chr1", IRanges(1,1e6)), meth=importFIMO_S3)
+importFIMO(system.file("M5946_1/chr1.bed", package="TFutils"))
+vdf = system.file("M5946_1/chr1.bed.gz", package="TFutils")
+importFIMO(Rsamtools::TabixFile(vdf), 
+  GenomicRanges::GRanges("chr1", IRanges::IRanges(1e6,11e6)))
 ```
 
 

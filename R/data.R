@@ -1,19 +1,11 @@
 
-#' gwascat_hg19: GRanges of march 21 2018 EBI gwascat
+#' gwascat_hg19: GRanges of march 21 2018 EBI gwascat, limit to chr17
 #' @docType data
 #' @format GenomicRanges GRanges instance
 #' @source gwascat::makeCurrentGwascat, with gwascat:::lo38to19 applied
 #' @examples
-#' TFutils::gwascat_hg19[,1:5]
-"gwascat_hg19"
-
-#' gwascat_GRCh38: GRanges of march 21 2018 EBI gwascat
-#' @docType data
-#' @format GenomicRanges GRanges instance
-#' @source gwascat::makeCurrentGwascat, with a little extra metadata
-#' @examples
-#' TFutils::gwascat_GRCh38[,1:5]
-"gwascat_GRCh38"
+#' TFutils::gwascat_hg19_chr17[,1:5]
+"gwascat_hg19_chr17"
 
 #' fimoMap: table with Mnnnn (motif PWM tags) and HGNC symbols for TFs
 #' @docType data
@@ -32,6 +24,7 @@
 "tftColl"
 
 #' fimo16: GenomicFiles instance to AWS S3-resident FIMO bed for 16 TFs
+#' @importClassesFrom GenomicFiles GenomicFiles
 #' @docType data
 #' @format GenomicFiles for a TabixFileList
 #' @source K. Glass ran FIMO
@@ -82,4 +75,12 @@
 #' TFutils::named_tf
 #' named_tf[["VDR"]]
 "named_tf"
+
+#' tfhash: data.frame with MSigDb TFs, TF targets as symbol or ENTREZ
+#' @docType data
+#' @format list
+#' @examples
+#' TFutils::tfhash
+#' tfhash[1:3,]
+"tfhash"
 
