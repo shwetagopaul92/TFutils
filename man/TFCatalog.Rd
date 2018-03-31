@@ -19,3 +19,6 @@ and any other columns of use}
 \description{
 Constructor for TFCatalog
 }
+\examples{
+TFCatalog
+}

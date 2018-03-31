@@ -11,6 +11,8 @@ setClass("TFCatalog", representation(name="character",
 #' @param HGNCmap data.frame with column 1 nativeIds, column 2 HGNC or hgnc.heur for MSigDb
 #' and any other columns of use
 #' @param metadata a list of metadata elements
+#' @examples
+#' TFCatalog
 #' @export
 TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
   if (missing(metadata)) metadata=list()

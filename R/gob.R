@@ -9,6 +9,8 @@
 #' @param gadtitle character(1) a title for the gadget panel
 #' @rawNamespace importClassesFrom(GenomicRanges, GRanges)
 #' @note Will use TFutils::gwascat_hg19_chr17 to look for 'MAPPED_GENE' field entries matching targets, also hardcoded to use org.Hs.eg.db to map symbols
+#' @examples
+#' if (interactive()) TFtargs()
 #' @export
 TFtargs = function(gscoll=TFutils::tftColl, initTF="VDR_Q3",
    gadtitle="Search for a TF; its targets will be checked for mapped status in GWAS catalog") {
