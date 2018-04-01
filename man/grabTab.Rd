@@ -5,7 +5,7 @@
 \title{create table of TF targets and related metadata}
 \usage{
 grabTab(tfstub = "STAT1", gscoll = TFutils::tftColl,
-  orgdb = org.Hs.eg.db::org.Hs.eg.db, gwrngs = TFutils::gwascat_hg19)
+  orgdb = org.Hs.eg.db::org.Hs.eg.db, gwrngs = TFutils::gwascat_hg19_chr17)
 }
 \arguments{
 \item{tfstub}{character(1) gene-like symbol for TF; will be grepped in names(gscoll)}
@@ -16,12 +16,15 @@ grabTab(tfstub = "STAT1", gscoll = TFutils::tftColl,
 
 \item{gwrngs}{a GRanges representing EBI gwascat, must have \code{DISEASE/TRAIT}, \code{MAPPED_GENE}}
 }
+\value{
+data.frame instance
+}
 \description{
 create table of TF targets and related metadata
 }
 \examples{
 gt = grabTab("VDR", gscoll=TFutils::tftColl,
-   orgdb=org.Hs.eg.db::org.Hs.eg.db, gwrngs=TFutils::gwascat_hg19)
+   orgdb=org.Hs.eg.db::org.Hs.eg.db, gwrngs=TFutils::gwascat_hg19_chr17)
 dim(gt)
 head(gt)
 }

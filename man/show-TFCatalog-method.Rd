@@ -10,6 +10,9 @@
 \arguments{
 \item{object}{instance of TFCatalog}
 }
+\value{
+side effect
+}
 \description{
 produce a concise report on TFCatalog instnace
 }

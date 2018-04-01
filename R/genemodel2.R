@@ -33,6 +33,7 @@ genemodelDF = function(sym, resource,
 #' answering exons(), with AnnotationFilter::SymbolFilter 
 #' as filter parameter
 #' @param \dots passed to genemodelDF
+#' @return instance of Gviz GeneRegionTrack
 #' @examples
 #' if (requireNamespace("EnsDb.Hsapiens.v75") &
 #'     requireNamespace("Gviz")) {
