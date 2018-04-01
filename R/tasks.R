@@ -9,6 +9,7 @@
 #' utility to generate link to biocfound bucket for FIMO TFBS scores
 #' @param tag character(1) token identifying TF, can be an HGNC gene name or Mnnnn PWM tag.
 #' It must be findable in TFutils::fimoMap table.
+#' @return character(1) URL
 #' @examples
 #' URL_s3_tf
 #' @export

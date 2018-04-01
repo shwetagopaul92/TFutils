@@ -1,6 +1,7 @@
 setGeneric("importFIMO", function(src, parms, ...) standardGeneric("importFIMO"))
 
 #' import a FIMO bed-like file
+#' @importFrom Rsamtools TabixFile scanTabix
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
 #' @importFrom GenomeInfoDb seqinfo
@@ -10,6 +11,7 @@ setGeneric("importFIMO", function(src, parms, ...) standardGeneric("importFIMO")
 #' @param src TabixFile instance
 #' @param parms a GRanges instance delimiting the import; multiple GRanges can be used
 #' @param \dots passed to GenomicRanges::GRanges
+#' @return instance of GRanges
 #' @examples
 #' if (requireNamespace("Rsamtools")) {
 #'  tf = Rsamtools::TabixFile(system.file("M5946_1/chr1.bed.gz", package="TFutils"))

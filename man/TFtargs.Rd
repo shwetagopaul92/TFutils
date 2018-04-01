@@ -14,6 +14,9 @@ TFtargs(gscoll = TFutils::tftColl, initTF = "VDR_Q3",
 
 \item{gadtitle}{character(1) a title for the gadget panel}
 }
+\value{
+on app conclusion a data.frame is returned
+}
 \description{
 gadget to help sort through tags naming TFs
 }

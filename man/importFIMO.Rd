@@ -18,6 +18,9 @@
 
 \item{\dots}{passed to GenomicRanges::GRanges}
 }
+\value{
+instance of GRanges
+}
 \description{
 import a FIMO bed-like file
 }

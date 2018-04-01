@@ -9,6 +9,7 @@
 #' @param gadtitle character(1) a title for the gadget panel
 #' @rawNamespace importClassesFrom(GenomicRanges, GRanges)
 #' @note Will use TFutils::gwascat_hg19_chr17 to look for 'MAPPED_GENE' field entries matching targets, also hardcoded to use org.Hs.eg.db to map symbols
+#' @return on app conclusion a data.frame is returned
 #' @examples
 #' if (interactive()) TFtargs()
 #' @export

@@ -1,6 +1,7 @@
 #' define a structure to hold information about TFs from diverse reference sources
 #' @importFrom methods new show
 #' @importFrom stats na.omit
+#' @importFrom Biobase selectSome
 #' @aliases "TFCatalog-class"
 #' @export
 setClass("TFCatalog", representation(name="character",
@@ -11,6 +12,7 @@ setClass("TFCatalog", representation(name="character",
 #' @param HGNCmap data.frame with column 1 nativeIds, column 2 HGNC or hgnc.heur for MSigDb
 #' and any other columns of use
 #' @param metadata a list of metadata elements
+#' @return instance of TFCatalog
 #' @examples
 #' TFCatalog
 #' @export
@@ -21,6 +23,7 @@ TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
 }
 #' produce a concise report on TFCatalog instnace
 #' @aliases show,TFCatalog-method
+#' @return side effect
 #' @param object instance of TFCatalog
 #' @export
 setMethod("show", "TFCatalog", function(object) {

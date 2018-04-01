@@ -16,6 +16,9 @@ and any other columns of use}
 
 \item{metadata}{a list of metadata elements}
 }
+\value{
+instance of TFCatalog
+}
 \description{
 Constructor for TFCatalog
 }

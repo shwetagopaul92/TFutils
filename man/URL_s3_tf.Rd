@@ -10,6 +10,9 @@ URL_s3_tf(tag = "M3433")
 \item{tag}{character(1) token identifying TF, can be an HGNC gene name or Mnnnn PWM tag.
 It must be findable in TFutils::fimoMap table.}
 }
+\value{
+character(1) URL
+}
 \description{
 utility to generate link to biocfound bucket for FIMO TFBS scores
 }

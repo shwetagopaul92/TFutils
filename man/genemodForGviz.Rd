@@ -19,6 +19,9 @@ as filter parameter}
 
 \item{\dots}{passed to genemodelDF}
 }
+\value{
+instance of Gviz GeneRegionTrack
+}
 \description{
 create a GeneRegionTrack instance for selected symbols
 }

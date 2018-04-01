@@ -16,6 +16,9 @@ grabTab(tfstub = "STAT1", gscoll = TFutils::tftColl,
 
 \item{gwrngs}{a GRanges representing EBI gwascat, must have \code{DISEASE/TRAIT}, \code{MAPPED_GENE}}
 }
+\value{
+data.frame instance
+}
 \description{
 create table of TF targets and related metadata
 }
