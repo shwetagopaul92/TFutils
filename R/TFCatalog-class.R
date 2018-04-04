@@ -21,6 +21,12 @@ TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
   new("TFCatalog", name=name, nativeIds=nativeIds,
       HGNCmap=HGNCmap, metadata=metadata)
 }
+#' simple accessor for HGNCmap component of TFCatalog
+#' @param x instance of TFCatalog
+#' @examples
+#' HGNCmap
+#' @export
+HGNCmap = function(x) slot(x, "HGNCmap")
 #' produce a concise report on TFCatalog instnace
 #' @aliases show,TFCatalog-method
 #' @return side effect
