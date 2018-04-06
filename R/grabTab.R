@@ -8,6 +8,8 @@
 #' @param orgdb an instance of OrgDb as defined in AnnotationDbi
 #' @param gwrngs a GRanges representing EBI gwascat, must have `DISEASE/TRAIT`, `MAPPED_GENE`
 #' @return data.frame instance
+#' @note This function will link together information on targets of a
+#' given TF to the GWAS catalog.
 #' @examples
 #' gt = grabTab("VDR", gscoll=TFutils::tftColl,
 #'    orgdb=org.Hs.eg.db::org.Hs.eg.db, gwrngs=TFutils::gwascat_hg19_chr17)

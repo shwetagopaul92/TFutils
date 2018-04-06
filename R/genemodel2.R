@@ -7,6 +7,9 @@
 #' as filter parameter
 #' @param columnsKept character vector used as `columns` param in exons()
 #' @param \dots passed to exons()
+#' @note There are many approaches available to acquiring 'gene models'
+#' in Bioconductor; this one emphasizes the use of the exons method
+#' for Ensembl annotation.
 #' @return data.frame instance with exons in rows
 #' @examples
 #' if (requireNamespace("EnsDb.Hsapiens.v75")) {
@@ -32,6 +35,11 @@ genemodelDF = function(sym, resource,
 #' @param resource should be or inherit from EnsDb, 
 #' answering exons(), with AnnotationFilter::SymbolFilter 
 #' as filter parameter
+#' @note This function helps to display the locations of TF binding sites
+#' in the context of complex gene models.  A complication is that we
+#' have nice visualization of quantitative affinity predictions for TFs
+#' in the vignette, based on ggplot2, but it is not clear how to use
+#' that specific code to work with Gviz.
 #' @param \dots passed to genemodelDF
 #' @return instance of Gviz GeneRegionTrack
 #' @examples
