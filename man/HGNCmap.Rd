@@ -9,6 +9,9 @@ HGNCmap(x)
 \arguments{
 \item{x}{instance of TFCatalog}
 }
+\value{
+dataframe instance
+}
 \description{
 simple accessor for HGNCmap component of TFCatalog
 }
