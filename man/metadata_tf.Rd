@@ -5,6 +5,9 @@
 \alias{metadata_tf}
 \title{metadata_tf: list with metadata (motif_if and hgnc_symbol) about all the CISBP FIMO scan TF bed files}
 \format{list}
+\source{
+K. Glass ran FIMO
+}
 \usage{
 metadata_tf
 }

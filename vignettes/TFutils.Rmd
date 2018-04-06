@@ -134,14 +134,15 @@ TFs_HOCO = TFCatalog(name="hocomoco11", nativeIds=hocomoco.mono[,1],
 ```{r lkupset,echo=FALSE,out.width='60%', fig.cap='Sizes of TF catalogs and of intersections based on HGNC symbols for TFs.', fig.pos='h'}
 suppressPackageStartupMessages({library(UpSetR)})
 allhg = keys(org.Hs.eg.db::org.Hs.eg.db, keytype="SYMBOL")
-activesym = unique(unlist(list(TFs_GO@HGNCmap[,2], TFs_HOCO@HGNCmap[,2], TFs_MSIG@HGNCmap[,2], TFs_CISBP@HGNCmap[,2])))
+#activesym = unique(unlist(list(TFs_GO@HGNCmap[,2], TFs_HOCO@HGNCmap[,2], TFs_MSIG@HGNCmap[,2], TFs_CISBP@HGNCmap[,2])))
+activesym = unique(unlist(list(HGNCmap(TFs_GO)[,2], HGNCmap(TFs_HOCO)[,2], HGNCmap(TFs_MSIG)[,2], HGNCmap(TFs_CISBP)[,2])))
 use = intersect(allhg, activesym)
 mymat = matrix(0, nr=1730, nc=4)
 rownames(mymat) = use
-mymat[na.omit(TFs_GO@HGNCmap[,2]),1] = 1
-mymat[na.omit(TFs_MSIG@HGNCmap[,2]),2] = 1
-mymat[na.omit(TFs_HOCO@HGNCmap[-246,2]),3] = 1
-mymat[na.omit(TFs_CISBP@HGNCmap[,2]),4] = 1
+mymat[na.omit(HGNCmap(TFs_GO)[,2]),1] = 1
+mymat[na.omit(HGNCmap(TFs_MSIG)[,2]),2] = 1
+mymat[na.omit(HGNCmap(TFs_HOCO)[-246,2]),3] = 1
+mymat[na.omit(HGNCmap(TFs_CISBP)[,2]),4] = 1
 colnames(mymat) = c("GO", "MSigDb", "HOCO", "CISBP")
 upset(data.frame(mymat),nsets=4,sets=c("MSigDb", "HOCO", "GO", "CISBP"), keep.order=TRUE, order.by="degree"
 )
@@ -174,13 +175,13 @@ classes correspond to TFClass subfamilies (@Wingender2018).
 Table: (\#tab:classtab) Most frequently represented TF classes in CISBP and HOCOMOCO. Entries in columns Nc (Nh) are numbers of distinct TFs annotated to classes in columns CISBP (HOCOMOCO) respectively.
 
 ```{r dodo,echo=FALSE}
-cismap = TFs_CISBP@HGNCmap
+cismap = HGNCmap(TFs_CISBP)
 scis = split(cismap, cismap$HGNC)
-uf = sapply(scis, function(x) x$Family_Name[1])
+uf = vapply(scis, function(x) x$Family_Name[1],"character")
 CISTOP = sort(table(uf),decreasing=TRUE)[1:10]
-hoc = TFs_HOCO@HGNCmap
+hoc = HGNCmap(TFs_HOCO)
 shoc = split(hoc, hoc$HGNC)
-sfam = sapply(shoc, function(x)x$`TF family`[1])
+sfam = vapply(shoc, function(x)x$`TF family`[1], "character")
 HOTOP = sort(table(sfam),decreasing=TRUE)[1:10]
 kable(data.frame(CISBP=names(CISTOP), Nc=as.numeric(CISTOP), 
    HOCOMOCO=names(HOTOP), Nh=as.numeric(HOTOP)), format="markdown")

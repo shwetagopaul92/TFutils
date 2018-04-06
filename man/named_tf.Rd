@@ -5,6 +5,9 @@
 \alias{named_tf}
 \title{named_tf: named list with the names being the hgnc_symbol of the motif_id}
 \format{list}
+\source{
+K. Glass ran FIMO
+}
 \usage{
 named_tf
 }

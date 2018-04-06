@@ -25,26 +25,3 @@ chk = as(mcols(gwrngs), "data.frame") %>%
 cbind(TF=tfstub, chk)
 }
 
-grabTab.old = function(tfHGNC, pgmap, gscoll, gwrngs) {
-    ns = names(gscoll)
-    nspl = strsplit(ns, "_")
-    base = sapply(nspl, "[", 1)
-    ans = pgmap[pgmap$HGNC == tfHGNC, ]
-    if (length(hit <- which(tfHGNC == base))>0) {
-     # direct hit -- there is a gene set whose prefix matches tfHGNC exactly
-           gs = gscoll[[hit[1]]]  # FIXME should iterate if length(hit)>1
-           geneIdType(gs) = SymbolIdentifier("org.Hs.eg.db")
-           ans = data.frame(
-              query=tfHGNC, setname=setName(gs), targs=geneIds(gs), stringsAsFactors=FALSE)
-           targs = ans$targs
-           hits = intersect(targs, gwrngs$MAPPED_GENE)
-           if (length(hits)>0) {
-             allt = rep(" ", length(targs))
-             names(allt) = targs
-             allt[hits] = "yes"
-             ans$mappedInGwascat = allt
-             }   
-           }
-     ans
-}
-

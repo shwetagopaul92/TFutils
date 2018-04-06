@@ -5,7 +5,7 @@
 #' @aliases "TFCatalog-class"
 #' @export
 setClass("TFCatalog", representation(name="character",
- nativeIds="character", HGNCmap="data.frame", metadata="ANY"))
+                                     nativeIds="character", HGNCmap="data.frame", metadata="ANY"))
 #' Constructor for TFCatalog
 #' @param name informative character(1) for collection
 #' @param nativeIds character() vector of identifiers used by collection creators
@@ -21,15 +21,21 @@ TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
   new("TFCatalog", name=name, nativeIds=nativeIds,
       HGNCmap=HGNCmap, metadata=metadata)
 }
+#' simple accessor for HGNCmap component of TFCatalog
+#' @param x instance of TFCatalog
+#' @examples
+#' HGNCmap
+#' @export
+HGNCmap = function(x) slot(x, "HGNCmap")
 #' produce a concise report on TFCatalog instnace
 #' @aliases show,TFCatalog-method
 #' @return side effect
 #' @param object instance of TFCatalog
 #' @export
 setMethod("show", "TFCatalog", function(object) {
- cat("TFutils TFCatalog instance", object@name, "\n")
- cat(sprintf(" %d native Ids, including\n", length(object@nativeIds)))
- cat(Biobase::selectSome(object@nativeIds, max=2), "\n")
- cat(sprintf(" %d unique HGNC tags, including\n", length(unique(object@HGNCmap[,2]))))
- cat(Biobase::selectSome(na.omit(object@HGNCmap[,2])), "\n")
+  cat("TFutils TFCatalog instance", object@name, "\n")
+  cat(sprintf(" %d native Ids, including\n", length(object@nativeIds)))
+  cat(Biobase::selectSome(object@nativeIds, max=2), "\n")
+  cat(sprintf(" %d unique HGNC tags, including\n", length(unique(object@HGNCmap[,2]))))
+  cat(Biobase::selectSome(na.omit(object@HGNCmap[,2])), "\n")
 })

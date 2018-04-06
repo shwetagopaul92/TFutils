@@ -64,6 +64,7 @@
 #' metadata_tf: list with metadata (motif_if and hgnc_symbol) about all the CISBP FIMO scan TF bed files
 #' @docType data
 #' @format list
+#' @source K. Glass ran FIMO
 #' @examples
 #' TFutils::metadata_tf
 "metadata_tf"
@@ -71,6 +72,7 @@
 #' named_tf: named list with the names being the hgnc_symbol of the motif_id
 #' @docType data
 #' @format list
+#' @source K. Glass ran FIMO
 #' @examples
 #' TFutils::named_tf
 #' named_tf[["VDR"]]
