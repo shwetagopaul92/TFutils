@@ -2,6 +2,13 @@
 #' @importFrom methods new show
 #' @importFrom stats na.omit
 #' @importFrom Biobase selectSome
+#' @note This class respects the notions that 1) a source of information
+#' about transcription factors should have a name, 2) each source
+#' has its own 'native' nomenclature for the factors themselves,
+#' 3) it is common to use the gene symbol to refer to the transctiption
+#' factor, and 4) additional metadata will frequently be required to
+#' establish information about provenance of assertions about transcription
+#' factors.
 #' @aliases "TFCatalog-class"
 #' @export
 setClass("TFCatalog", representation(name="character",

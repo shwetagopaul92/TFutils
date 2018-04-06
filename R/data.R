@@ -81,6 +81,7 @@
 #' tfhash: data.frame with MSigDb TFs, TF targets as symbol or ENTREZ
 #' @docType data
 #' @format list
+#' @source MSigDb "c3" (motif gene sets) has been harvested for simple annotation of TFs and targets.
 #' @examples
 #' TFutils::tfhash
 #' tfhash[1:3,]
