@@ -25,6 +25,13 @@ instance of Gviz GeneRegionTrack
 \description{
 create a GeneRegionTrack instance for selected symbols
 }
+\note{
+This function helps to display the locations of TF binding sites
+in the context of complex gene models.  A complication is that we
+have nice visualization of quantitative affinity predictions for TFs
+in the vignette, based on ggplot2, but it is not clear how to use
+that specific code to work with Gviz.
+}
 \examples{
 if (requireNamespace("EnsDb.Hsapiens.v75") &
     requireNamespace("Gviz")) {

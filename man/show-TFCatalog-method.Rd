@@ -3,7 +3,7 @@
 \docType{methods}
 \name{show,TFCatalog-method}
 \alias{show,TFCatalog-method}
-\title{produce a concise report on TFCatalog instnace}
+\title{produce a concise report on TFCatalog instance}
 \usage{
 \S4method{show}{TFCatalog}(object)
 }
@@ -14,5 +14,5 @@
 side effect
 }
 \description{
-produce a concise report on TFCatalog instnace
+produce a concise report on TFCatalog instance
 }

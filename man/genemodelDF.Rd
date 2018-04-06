@@ -23,6 +23,11 @@ data.frame instance with exons in rows
 \description{
 use EnsDb to generate an exon-level model of genes identified by symbol
 }
+\note{
+There are many approaches available to acquiring 'gene models'
+in Bioconductor; this one emphasizes the use of the exons method
+for Ensembl annotation.
+}
 \examples{
 if (requireNamespace("EnsDb.Hsapiens.v75")) {
  orm = genemodelDF("ORMDL3", EnsDb.Hsapiens.v75::EnsDb.Hsapiens.v75)

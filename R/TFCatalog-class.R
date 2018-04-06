@@ -29,12 +29,13 @@ TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
       HGNCmap=HGNCmap, metadata=metadata)
 }
 #' simple accessor for HGNCmap component of TFCatalog
+#' @importFrom methods slot
 #' @param x instance of TFCatalog
 #' @examples
 #' HGNCmap
 #' @export
 HGNCmap = function(x) slot(x, "HGNCmap")
-#' produce a concise report on TFCatalog instnace
+#' produce a concise report on TFCatalog instance
 #' @aliases show,TFCatalog-method
 #' @return side effect
 #' @param object instance of TFCatalog
