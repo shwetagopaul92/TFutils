@@ -23,5 +23,7 @@ instance of TFCatalog
 Constructor for TFCatalog
 }
 \examples{
-TFCatalog
+TFs_MSIG = TFCatalog(name="MsigDb.TFT",nativeIds=names(tftColl),
+HGNCmap=data.frame(tftCollMap,stringAsFactors=FALSE))
+TFs_MSIG
 }

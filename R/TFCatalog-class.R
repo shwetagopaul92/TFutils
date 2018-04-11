@@ -2,6 +2,11 @@
 #' @importFrom methods new show
 #' @importFrom stats na.omit
 #' @importFrom Biobase selectSome
+#' @slot name character 
+#' @slot nativeIds character tokens used by the provider to enumerate transcription factors
+#' @slot HGNCmap data.frame with atleast two columns,
+#' native id as first column and HGNC symbol as second column
+#' @slot metadata ANY
 #' @note This class respects the notions that 1) a source of information
 #' about transcription factors should have a name, 2) each source
 #' has its own 'native' nomenclature for the factors themselves,
@@ -21,7 +26,9 @@ setClass("TFCatalog", representation(name="character",
 #' @param metadata a list of metadata elements
 #' @return instance of TFCatalog
 #' @examples
-#' TFCatalog
+#' TFs_MSIG = TFCatalog(name="MsigDb.TFT",nativeIds=names(tftColl),
+#' HGNCmap=data.frame(tftCollMap,stringAsFactors=FALSE))
+#' TFs_MSIG
 #' @export
 TFCatalog = function(name, nativeIds, HGNCmap, metadata) {
   if (missing(metadata)) metadata=list()

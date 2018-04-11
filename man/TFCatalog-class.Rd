@@ -8,6 +8,19 @@
 \description{
 define a structure to hold information about TFs from diverse reference sources
 }
+\section{Slots}{
+
+\describe{
+\item{\code{name}}{character}
+
+\item{\code{nativeIds}}{character tokens used by the provider to enumerate transcription factors}
+
+\item{\code{HGNCmap}}{data.frame with atleast two columns,
+native id as first column and HGNC symbol as second column}
+
+\item{\code{metadata}}{ANY}
+}}
+
 \note{
 This class respects the notions that 1) a source of information
 about transcription factors should have a name, 2) each source

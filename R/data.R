@@ -1,4 +1,3 @@
-
 #' gwascat_hg19: GRanges of march 21 2018 EBI gwascat, limit to chr17
 #' @docType data
 #' @format GenomicRanges GRanges instance
@@ -19,6 +18,8 @@
 #' @docType data
 #' @format GSEABase GeneSetCollection instance
 #' @source broad institute
+#' @note run GSEABase::getGMT() on c3/TFT geneset collection
+#' from MSigDb
 #' @examples
 #' TFutils::tftColl
 "tftColl"

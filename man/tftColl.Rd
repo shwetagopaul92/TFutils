@@ -14,6 +14,10 @@ tftColl
 \description{
 tftColl: GSEABase GeneSetCollection for transcription factor targets
 }
+\note{
+run GSEABase::getGMT() on c3/TFT geneset collection
+from MSigDb
+}
 \examples{
 TFutils::tftColl
 }

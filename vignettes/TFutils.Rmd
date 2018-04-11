@@ -175,6 +175,7 @@ classes correspond to TFClass subfamilies (@Wingender2018).
 Table: (\#tab:classtab) Most frequently represented TF classes in CISBP and HOCOMOCO. Entries in columns Nc (Nh) are numbers of distinct TFs annotated to classes in columns CISBP (HOCOMOCO) respectively.
 
 ```{r dodo,echo=FALSE}
+library(knitr)
 cismap = HGNCmap(TFs_CISBP)
 scis = split(cismap, cismap$HGNC)
 uf = vapply(scis, function(x) x$Family_Name[1],"character")
