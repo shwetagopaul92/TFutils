@@ -137,12 +137,13 @@ allhg = keys(org.Hs.eg.db::org.Hs.eg.db, keytype="SYMBOL")
 #activesym = unique(unlist(list(TFs_GO@HGNCmap[,2], TFs_HOCO@HGNCmap[,2], TFs_MSIG@HGNCmap[,2], TFs_CISBP@HGNCmap[,2])))
 activesym = unique(unlist(list(HGNCmap(TFs_GO)[,2], HGNCmap(TFs_HOCO)[,2], HGNCmap(TFs_MSIG)[,2], HGNCmap(TFs_CISBP)[,2])))
 use = intersect(allhg, activesym)
-mymat = matrix(0, nr=1730, nc=4)
+mymat = matrix(0, nr=length(use), nc=4)
 rownames(mymat) = use
-mymat[na.omit(HGNCmap(TFs_GO)[,2]),1] = 1
-mymat[na.omit(HGNCmap(TFs_MSIG)[,2]),2] = 1
-mymat[na.omit(HGNCmap(TFs_HOCO)[-246,2]),3] = 1
-mymat[na.omit(HGNCmap(TFs_CISBP)[,2]),4] = 1
+iu = function(x) intersect(x,use)
+mymat[na.omit(iu(HGNCmap(TFs_GO)[,2])),1] = 1
+mymat[na.omit(iu(HGNCmap(TFs_MSIG)[,2])),2] = 1
+mymat[na.omit(iu(HGNCmap(TFs_HOCO)[,2])),3] = 1
+mymat[na.omit(iu(HGNCmap(TFs_CISBP)[,2])),4] = 1
 colnames(mymat) = c("GO", "MSigDb", "HOCO", "CISBP")
 upset(data.frame(mymat),nsets=4,sets=c("MSigDb", "HOCO", "GO", "CISBP"), keep.order=TRUE, order.by="degree"
 )
